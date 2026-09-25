@@ -22,7 +22,8 @@ export async function applyUserMessage(session: Session, userText: string) {
         kit: session.kit,
         messages: session.messages,
       });
-    } catch {
+    } catch (error) {
+      console.error("Gemini turn failed, falling back to demo:", error);
       usedDemo = true;
       raw = "";
     }
